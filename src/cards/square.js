@@ -6,15 +6,22 @@
 import React, { PropTypes, Component } from 'react'
 
 
-class SquareCard extends Component {
+class SmallCard extends Component {
 
   render() {
+    let classCard = 'card'
+    if (this.props.type == 'square') 
+      classCard += ' squareCard'
+    else if (this.props.type == 'box-vert')
+      classCard += ' card-height-2 boxCardVert'
+    else
+      classCard += ' card-width-2 boxCardHoriz'
     return(
-      <div className="card squareCard">
+      <div className={classCard}>
         <h3>Small Card</h3>
       </div>
     )
   }
 }
 
-export default SquareCard
+export default SmallCard

@@ -1,3 +1,5 @@
+src/bundle*
+
 # Logs
 logs
 *.log

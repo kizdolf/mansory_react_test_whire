@@ -9,10 +9,9 @@ height: 100%;
 
 /* ---- grid ---- */
 #main-wrapper {
-  background: white;
-  max-width: 1200px;
+  background: #d6d6d6;
   margin: auto;
-  border: 1px solid blue;
+  max-width: 1000px;
 }
 
 .grid {
@@ -45,6 +44,7 @@ clear: both;
   border-color: hsla(0, 0%, 0%, 0.5);
   border-radius: 5px;
   box-shadow: 1px 1px 1px 1px black;
+  text-align: center;
 }
 
 
@@ -54,12 +54,28 @@ clear: both;
 .card-height-2 { height: 400px; }
 .card-height-3 { height: 600px; }
 
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 1100px) {
+  .offerWhire.card-width-3 { width: 400px; }
+}
+@media screen and (max-width: 1100px) {
+  .card { width: 400px; }
+}
 
-.card-width-2 { width:  600px; }
-.card-width-3 { width:  600px; }
-
-.card-height-2 { height: 400px; }
-.card-height-3 { height: 400px; }
-
+.offerWhire {
+  background: #ffffbb;
+}
+.squareCard {
+  background: #fd7272;
+}
+.boxCardHoriz {
+  background: #fd72ff;
+}
+.boxCardVert {
+  background: #fd2211;
+}
+.offerPE {
+  background: #6969dc;
+}
+.testimonyCard {
+  background: #aba4a4;
 }
