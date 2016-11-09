@@ -10,7 +10,7 @@ class SmallCard extends Component {
 
   render() {
     let classCard = 'card'
-    if (this.props.type == 'square') 
+    if (this.props.type == 'square')
       classCard += ' squareCard'
     else if (this.props.type == 'box-vert')
       classCard += ' card-height-2 boxCardVert'
@@ -18,7 +18,7 @@ class SmallCard extends Component {
       classCard += ' card-width-2 boxCardHoriz'
     return(
       <div className={classCard}>
-        <h3>Small Card</h3>
+        <h3>Small Card {this.props.type}</h3>
       </div>
     )
   }

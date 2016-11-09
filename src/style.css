@@ -57,8 +57,9 @@ clear: both;
 @media screen and (max-width: 1100px) {
   .offerWhire.card-width-3 { width: 400px; }
 }
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 780px) {
   .card { width: 400px; }
+  .boxCardVert { height: 200px; }
 }
 
 .offerWhire {

@@ -28,10 +28,10 @@ class App extends Component {
         <OfferWhire />
         <TestimonyCard />
         <OfferPE />
-        {/* <div className="card card-height-2"> */}
-        <SmallCard type="square"/>
-        <SmallCard type="square"/>
-        {/* </div> */}
+        <div className="card card-height-2">
+          <SmallCard type="square"/>
+          <SmallCard type="square"/>
+        </div>
         <SmallCard type="box-horiz"/>
         <OfferPE />
         <OfferPE />
@@ -40,6 +40,81 @@ class App extends Component {
         <OfferWhire />
         <TestimonyCard />
         <OfferWhire />
+        <SmallCard type="box-horiz"/>
+        <SmallCard type="square"/>
+        <SmallCard type="square"/>
+        <OfferWhire />
+        <TestimonyCard />
+        <OfferPE />
+        <div className="card card-height-2">
+          <SmallCard type="square"/>
+          <SmallCard type="square"/>
+        </div>
+        <SmallCard type="box-horiz"/>
+        <OfferPE />
+        <OfferPE />
+        <SmallCard type="box-vert"/>
+        <SmallCard type="box-horiz"/>
+        <OfferWhire />
+        <TestimonyCard />
+        <OfferWhire />
+        <SmallCard type="box-horiz"/>
+        <SmallCard type="square"/>
+        <SmallCard type="square"/>
+        <OfferWhire />
+        <TestimonyCard />
+        <OfferPE />
+        <div className="card card-height-2">
+          <SmallCard type="square"/>
+          <SmallCard type="square"/>
+        </div>
+        <SmallCard type="box-horiz"/>
+        <OfferPE />
+        <OfferPE />
+        <SmallCard type="box-vert"/>
+        <SmallCard type="box-horiz"/>
+        <OfferWhire />
+        <TestimonyCard />
+        <OfferWhire />
+        <SmallCard type="box-horiz"/>
+        <SmallCard type="square"/>
+        <SmallCard type="square"/>
+        <OfferWhire />
+        <TestimonyCard />
+        <OfferPE />
+        <div className="card card-height-2">
+          <SmallCard type="square"/>
+          <SmallCard type="square"/>
+        </div>
+        <SmallCard type="box-horiz"/>
+        <OfferPE />
+        <OfferPE />
+        <SmallCard type="box-vert"/>
+        <SmallCard type="box-horiz"/>
+        <OfferWhire />
+        <TestimonyCard />
+        <OfferWhire />
+        <SmallCard type="box-horiz"/>
+        <SmallCard type="square"/>
+        <SmallCard type="square"/>
+        <OfferWhire />
+        <TestimonyCard />
+        <OfferPE />
+        <div className="card card-height-2">
+          <SmallCard type="square"/>
+          <SmallCard type="square"/>
+        </div>
+        <SmallCard type="box-horiz"/>
+        <OfferPE />
+        <OfferPE />
+        <SmallCard type="box-vert"/>
+        <SmallCard type="box-horiz"/>
+        <OfferWhire />
+        <TestimonyCard />
+        <OfferWhire />
+        <SmallCard type="box-horiz"/>
+        <SmallCard type="square"/>
+        <SmallCard type="square"/>
       </Masonry>
     </div>
     )
