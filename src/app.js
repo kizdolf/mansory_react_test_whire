@@ -16,105 +16,92 @@ var masonryOptions = {
 
 const rootElement = document.getElementById('root')
 
+const cardTypes = ['whire', 'testi', 'PE', 'square', 'box-vert', 'box-horiz', ['square', 'square']]
+
 class App extends Component {
+
+  constructor(props) {
+    super(props)
+    this.prependCard = this.prependCard.bind(this)
+    this.appendCard = this.appendCard.bind(this)
+
+    this.state = {
+      schema : [
+        'whire',
+        'testi',
+        'PE',
+        ['square', 'square'],
+        'box-horiz',
+        'PE',
+        'PE',
+        'box-vert',
+        'box-horiz',
+        'whire',
+        'testi',
+        'whire',
+        'box-horiz',
+        'square',
+        'square'
+      ]
+    }
+  }
+
+  prependCard() {
+    const randomCard = cardTypes[Math.floor(Math.random()*cardTypes.length)];
+    const sch = this.state.schema
+    sch.unshift(randomCard)
+    this.setState({schema: sch})
+  }
+
+  appendCard() {
+    const sch = this.state.schema
+    const randomCard = cardTypes[Math.floor(Math.random()*cardTypes.length)];
+    sch.push(randomCard)
+    this.setState({schema: sch})
+  }
+
   render() {
+    const getElem = (item) => {
+      switch (item) {
+        case 'whire':
+          return <OfferWhire />
+        case 'testi':
+          return <TestimonyCard />
+        case 'PE':
+          return <OfferPE />
+        case 'box-horiz':
+          return <SmallCard type="box-horiz" />
+        case 'box-vert':
+          return <SmallCard type="box-vert" />
+        case 'square':
+          return <SmallCard type="square"/>
+        default:
+          return null
+      }
+    }
+    const buildCards = this.state.schema.map((item, i) => {
+      if (Array.isArray(item)) {
+        const subMount = item.map((subItem) => {
+          return getElem(subItem)
+        })
+        return(
+          <div className="card card-height-2">
+            {subMount}
+          </div>
+        )
+      }
+      else {
+        return getElem(item)
+      }
+    })
+
     return(
     <div id="main-wrapper">
       <div> Mansonry test! </div>
-      <Masonry
-        className={'grid'}
-        options={masonryOptions}
-      >
-        <OfferWhire />
-        <TestimonyCard />
-        <OfferPE />
-        <div className="card card-height-2">
-          <SmallCard type="square"/>
-          <SmallCard type="square"/>
-        </div>
-        <SmallCard type="box-horiz"/>
-        <OfferPE />
-        <OfferPE />
-        <SmallCard type="box-vert"/>
-        <SmallCard type="box-horiz"/>
-        <OfferWhire />
-        <TestimonyCard />
-        <OfferWhire />
-        <SmallCard type="box-horiz"/>
-        <SmallCard type="square"/>
-        <SmallCard type="square"/>
-        <OfferWhire />
-        <TestimonyCard />
-        <OfferPE />
-        <div className="card card-height-2">
-          <SmallCard type="square"/>
-          <SmallCard type="square"/>
-        </div>
-        <SmallCard type="box-horiz"/>
-        <OfferPE />
-        <OfferPE />
-        <SmallCard type="box-vert"/>
-        <SmallCard type="box-horiz"/>
-        <OfferWhire />
-        <TestimonyCard />
-        <OfferWhire />
-        <SmallCard type="box-horiz"/>
-        <SmallCard type="square"/>
-        <SmallCard type="square"/>
-        <OfferWhire />
-        <TestimonyCard />
-        <OfferPE />
-        <div className="card card-height-2">
-          <SmallCard type="square"/>
-          <SmallCard type="square"/>
-        </div>
-        <SmallCard type="box-horiz"/>
-        <OfferPE />
-        <OfferPE />
-        <SmallCard type="box-vert"/>
-        <SmallCard type="box-horiz"/>
-        <OfferWhire />
-        <TestimonyCard />
-        <OfferWhire />
-        <SmallCard type="box-horiz"/>
-        <SmallCard type="square"/>
-        <SmallCard type="square"/>
-        <OfferWhire />
-        <TestimonyCard />
-        <OfferPE />
-        <div className="card card-height-2">
-          <SmallCard type="square"/>
-          <SmallCard type="square"/>
-        </div>
-        <SmallCard type="box-horiz"/>
-        <OfferPE />
-        <OfferPE />
-        <SmallCard type="box-vert"/>
-        <SmallCard type="box-horiz"/>
-        <OfferWhire />
-        <TestimonyCard />
-        <OfferWhire />
-        <SmallCard type="box-horiz"/>
-        <SmallCard type="square"/>
-        <SmallCard type="square"/>
-        <OfferWhire />
-        <TestimonyCard />
-        <OfferPE />
-        <div className="card card-height-2">
-          <SmallCard type="square"/>
-          <SmallCard type="square"/>
-        </div>
-        <SmallCard type="box-horiz"/>
-        <OfferPE />
-        <OfferPE />
-        <SmallCard type="box-vert"/>
-        <SmallCard type="box-horiz"/>
-        <OfferWhire />
-        <TestimonyCard />
-        <OfferWhire />
-        <SmallCard type="box-horiz"/>
-        <SmallCard type="square"/>
-        <SmallCard type="square"/>
+      <button onClick={this.prependCard}>prepend card</button>
+      <button onClick={this.appendCard}>append card</button>
+      <Masonry className={'grid'} options={masonryOptions}>
+        {buildCards}
       </Masonry>
     </div>
     )
