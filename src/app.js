@@ -5,6 +5,7 @@ import OfferPE from './cards/offerPE'
 import OfferWhire from './cards/offerWhire'
 import SmallCard from './cards/square'
 import TestimonyCard from './cards/testimony'
+import Options from './options'
 
 import Masonry from 'react-masonry-component'
 
@@ -16,13 +17,14 @@ var masonryOptions = {
 
 const rootElement = document.getElementById('root')
 
-const cardTypes = ['whire', 'testi', 'PE', 'square', 'box-vert', 'box-horiz', ['square', 'square']]
+const cardTypes = ['whire', 'testi', 'PE', 'square', 'box-vert', 'box-horiz']
 
 class App extends Component {
 
   constructor(props) {
     super(props)
     this.prependCard = this.prependCard.bind(this)
+    this.delCard = this.delCard.bind(this)
     this.appendCard = this.appendCard.bind(this)
 
     this.state = {
@@ -30,7 +32,8 @@ class App extends Component {
         'whire',
         'testi',
         'PE',
-        ['square', 'square'],
+        'square',
+        'square',
         'box-horiz',
         'PE',
         'PE',
@@ -46,60 +49,53 @@ class App extends Component {
     }
   }
 
-  prependCard() {
-    const randomCard = cardTypes[Math.floor(Math.random()*cardTypes.length)];
+  prependCard(index = null) {
     const sch = this.state.schema
-    sch.unshift(randomCard)
-    this.setState({schema: sch})
+    if(index == null) sch.unshift(cardTypes[Math.floor(Math.random()*cardTypes.length)])
+    else sch.unshift(cardTypes[index])
+    this.setState({schema : sch})
   }
 
-  appendCard() {
+  appendCard(index = null) {
     const sch = this.state.schema
-    const randomCard = cardTypes[Math.floor(Math.random()*cardTypes.length)];
-    sch.push(randomCard)
+    if(index == null) sch.push(cardTypes[Math.floor(Math.random()*cardTypes.length)])
+    else sch.push(cardTypes[index])
+    this.setState({schema : sch})
+  }
+
+  delCard (index) {
+    const sch = this.state.schema
+    sch[index] = ''
     this.setState({schema: sch})
   }
 
   render() {
-    const getElem = (item) => {
+    const getElem = (item, index) => {
       switch (item) {
         case 'whire':
-          return <OfferWhire />
+          return <OfferWhire delCard={this.delCard} index={index} key={index}/>
         case 'testi':
-          return <TestimonyCard />
+          return <TestimonyCard delCard={this.delCard} index={index} key={index}/>
         case 'PE':
-          return <OfferPE />
+          return <OfferPE delCard={this.delCard} index={index} key={index}/>
         case 'box-horiz':
-          return <SmallCard type="box-horiz" />
+          return <SmallCard type="box-horiz" delCard={this.delCard} index={index} key={index}/>
         case 'box-vert':
-          return <SmallCard type="box-vert" />
+          return <SmallCard type="box-vert" delCard={this.delCard} index={index} key={index}/>
         case 'square':
-          return <SmallCard type="square"/>
+          return <SmallCard type="square"delCard={this.delCard} index={index} key={index}/>
         default:
           return null
       }
     }
     const buildCards = this.state.schema.map((item, i) => {
-      if (Array.isArray(item)) {
-        const subMount = item.map((subItem) => {
-          return getElem(subItem)
-        })
-        return(
-          <div className="card card-height-2">
-            {subMount}
-          </div>
-        )
-      }
-      else {
-        return getElem(item)
-      }
+        return getElem(item, i)
     })
 
     return(
     <div id="main-wrapper">
       <div> Mansonry test! </div>
-      <button onClick={this.prependCard}>prepend card</button>
-      <button onClick={this.appendCard}>append card</button>
+      <Options append={this.appendCard} prepend={this.prependCard}/>
       <Masonry className={'grid'} options={masonryOptions}>
         {buildCards}
       </Masonry>

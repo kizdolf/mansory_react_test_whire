@@ -5,7 +5,7 @@ module.exports = {
     entry: [
         './src/app.js',
     ],
-    devtool: 'source-map',
+    // devtool: 'source-map',
     output: {
         filename: './src/bundle.js'
     },

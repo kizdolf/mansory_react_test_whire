@@ -7,6 +7,14 @@ import React, { PropTypes, Component } from 'react'
 
 
 class SmallCard extends Component {
+  constructor(props) {
+    super(props)
+    this.delCard = this.delCard.bind(this)
+  }
+
+  delCard() {
+    this.props.delCard(this.props.index)
+  }
 
   render() {
     let classCard = 'card'
@@ -18,6 +26,7 @@ class SmallCard extends Component {
       classCard += ' card-width-2 boxCardHoriz'
     return(
       <div className={classCard}>
+        <button onClick={this.delCard}>delCard</button>
         <h3>Small Card {this.props.type}</h3>
       </div>
     )
